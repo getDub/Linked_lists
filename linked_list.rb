@@ -1,22 +1,23 @@
 class LinkedList
   attr_accessor :head, :tail
   def initialize
-    @head = Node.new(nil)
-    # @head1 = Node.new(nil)
-    # @head2 = Node.new(nil)
-    # @tail = Node.new("reached tail", nil)
+    @head = nil
   end
   #  adds a new node containing value to the end of the list.
   def append(value)
     if @head == nil
-      @head = Node.new(value, nil)
+      prepend(value)
     else
-      traverse = Node.new(value, nil)
+      tmp = @head
+      while tmp.next_node != nil
+        tmp = tmp.next
+      end
+      tmp.next_node = Node.new(value, nil)
     end
   end
 
-  def create(val, pointer)
-    Node.new(val, pointer)
+  def prepend(value)
+    @head = Node.new(value, @head)
   end
 
   def traverse
@@ -25,6 +26,7 @@ class LinkedList
     while tmp.next_node != nil
       tmp = tmp.next_node
     end
+    tmp
   end
 
 end
@@ -40,11 +42,17 @@ end
 
 list = LinkedList.new
 p list
-p list.append(22)
-# p list.head.value
-# p list.head.next_node
+# p list.append(22)
+# p list.head
 p list.append(45)
+p list.append(35)
+p list.prepend(7)
+p list.prepend(9)
+# p list.head == nil
 # p list.head.value
 # p list.head.next_node
-p list
 # p list.traverse
+p list
+p list.head
+p list.head.next_node
+# p list.next_node
