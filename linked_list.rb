@@ -35,15 +35,24 @@ class LinkedList
   def size
     tmp = @head
     if @head == nil
-    counter = 0
+      size_counter = 0
     else
-      counter = 1
-      while tmp.next_node != nil
-        counter += 1
-        tmp = tmp.next_node
-      end
+     size_counter = 1
+        while tmp.next_node != nil
+          size_counter += 1
+          tmp = tmp.next_node
+        end
     end
-    counter
+    size_counter
+  end
+
+  # should return the value of the first node in the list. If the list is empty, it should return nil.
+  def head
+    if @head == nil
+      nil
+    else
+      @head.value
+    end
   end
 
 end
@@ -62,9 +71,9 @@ p list
 # p list.append(22)
 # p list.head
 p list.append(45)
-p list.append(35)
-p list.prepend(7)
-p list.prepend(9)
+# p list.append(35)
+# p list.prepend(7)
+# p list.prepend(9)
 # p list.head == nil
 # p list.head.value
 # p list.head.next_node
@@ -73,4 +82,5 @@ p list.prepend(9)
 # p list.head.next_node
 # p list.next_node
 # p list.traverse
-p list.size
+# p list.size
+p list.head
