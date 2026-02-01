@@ -55,6 +55,15 @@ class LinkedList
     end
   end
 
+  # tail should return the value of the final node in the list. If the list is empty, it should return nil.
+  def tail
+    if @head == nil
+      nil
+    else
+    traverse.value
+    end
+  end
+
 end
 
 class Node
@@ -71,8 +80,8 @@ p list
 # p list.append(22)
 # p list.head
 p list.append(45)
-# p list.append(35)
-# p list.prepend(7)
+p list.append(35)
+p list.prepend(7)
 # p list.prepend(9)
 # p list.head == nil
 # p list.head.value
@@ -81,6 +90,7 @@ p list.append(45)
 # p list.head
 # p list.head.next_node
 # p list.next_node
-# p list.traverse
 # p list.size
-p list.head
+# p list.head
+# p list.traverse
+p list.tail
