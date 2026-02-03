@@ -60,7 +60,22 @@ class LinkedList
     if @head == nil
       nil
     else
-    traverse.value
+      traverse.value
+    end
+  end
+  
+  # at(index) should return the value of the node at the given index. If there’s no node at the given index, it should return nil.
+  def at(index)
+    tmp = @head
+    index_counter = 0
+    if @head == nil
+      return
+    else
+      while tmp.next_node != nil && index_counter != index
+        index_counter += 1
+        tmp = tmp.next_node
+      end
+      tmp.value if index_counter == index
     end
   end
 
@@ -79,10 +94,10 @@ list = LinkedList.new
 p list
 # p list.append(22)
 # p list.head
-p list.append(45)
+# p list.append(45)
 p list.append(35)
 p list.prepend(7)
-# p list.prepend(9)
+p list.prepend(9)
 # p list.head == nil
 # p list.head.value
 # p list.head.next_node
@@ -92,5 +107,12 @@ p list.prepend(7)
 # p list.next_node
 # p list.size
 # p list.head
+p list
+# p list.at(0)
+# p list.at(1)
+# p list.at(2)
+# p list.at(3)
+# p list.at(4)
+p list.at(5)
 # p list.traverse
-p list.tail
+
