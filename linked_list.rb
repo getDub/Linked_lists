@@ -11,7 +11,7 @@ class LinkedList
     else
       tmp = @head
       while tmp.next_node != nil
-        tmp = tmp.next
+        tmp = tmp.next_node
       end
       tmp.next_node = Node.new(value, nil)
     end
@@ -79,6 +79,18 @@ class LinkedList
     end
   end
 
+  # pop should remove the head node from the list and return that node’s value. If called on an empty list, it should just return nil.
+  def pop
+    tmp = @head
+    if @head == nil
+      return
+    else
+      puts at(0)
+      tmp.value = tmp.next_node.value if tmp == nil
+      @head = tmp.next_node
+    end
+  end
+
 end
 
 class Node
@@ -92,27 +104,27 @@ end
 
 list = LinkedList.new
 p list
-# p list.append(22)
 # p list.head
-# p list.append(45)
+p list.append(45)
 p list.append(35)
-p list.prepend(7)
 p list.prepend(9)
-# p list.head == nil
-# p list.head.value
-# p list.head.next_node
-# p list
+p list.prepend(7)
+p list.at(0)
+p list.at(1)
+p list.at(2)
+p list.at(3)
+p list.at(4)
 # p list.head
-# p list.head.next_node
-# p list.next_node
-# p list.size
-# p list.head
+# p list.tail
 p list
-# p list.at(0)
-# p list.at(1)
-# p list.at(2)
-# p list.at(3)
-# p list.at(4)
-p list.at(5)
-# p list.traverse
-
+list.pop
+p list
+p list.at(0)
+p list.at(1)
+p list.at(2)
+p list.at(3)
+p list.at(4)
+list.pop
+list.pop
+list.pop
+list.pop
