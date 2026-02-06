@@ -104,6 +104,23 @@ class LinkedList
     end
   end
 
+  # index(value) returns the index of the node containing the value.
+  # If the value isn’t found, it should return nil.
+  # If more than one node has a value matching the given value, it should return the index of the first node with the matching value.
+  def index(value)
+    tmp = @head
+    index_counter = 0
+    if @head == nil
+      return
+    else
+      while tmp.next_node != nil && tmp.value != value
+        index_counter += 1
+        tmp = tmp.next_node
+      end
+      index_counter if tmp.value == value
+    end
+  end
+
 end
 
 class Node
@@ -121,12 +138,18 @@ p list.append(45)
 p list.append(35)
 p list.prepend(9)
 p list.prepend(7)
+p list.prepend(35)
 p list.at(0)
 p list.at(1)
 p list.at(2)
 p list.at(3)
 p list.at(4)
-# p list
-p list.contains?(35)
-p list.contains?(15)
+p list
+# p list.contains?(35)
+# p list.contains?(15)
+p list.index(45)
+p list.index(35)
+p list.index(9)
+p list.index(7)
+p list.index(100)
 
