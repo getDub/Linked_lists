@@ -121,6 +121,24 @@ class LinkedList
     end
   end
 
+  # to_s represent your LinkedList objects as strings, so you can print them out and preview them in the console.
+  # If the list is empty, it should return an empty string.
+  # The format should be: ( value ) -> ( value ) -> ( value ) -> nil.
+  def to_s
+    tmp = @head
+    if @head == nil
+      print "( empty ) -> "
+    elsif @head.next_node == nil
+      print "( #{@head.value} ) -> "
+    else
+      while tmp.next_node != nil
+        print "( #{tmp.value} ) -> " if @head.value == tmp.value
+        tmp = tmp.next_node
+        print "( #{tmp.value} ) -> "
+      end
+    end
+  end
+
 end
 
 class Node
@@ -134,22 +152,25 @@ end
 
 list = LinkedList.new
 p list
+p list.to_s
 p list.append(45)
+p list.to_s
 p list.append(35)
 p list.prepend(9)
 p list.prepend(7)
 p list.prepend(35)
-p list.at(0)
-p list.at(1)
-p list.at(2)
-p list.at(3)
-p list.at(4)
+# p list.at(0)
+# p list.at(1)
+# p list.at(2)
+# p list.at(3)
+# p list.at(4)
 p list
-# p list.contains?(35)
-# p list.contains?(15)
-p list.index(45)
-p list.index(35)
-p list.index(9)
-p list.index(7)
-p list.index(100)
+# # p list.contains?(35)
+# # p list.contains?(15)
+# # p list.index(45)
+# # p list.index(35)
+# # p list.index(9)
+# # p list.index(7)
+# # p list.index(100)
+p list.to_s
 
