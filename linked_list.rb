@@ -139,6 +139,44 @@ class LinkedList
     end
   end
 
+  # insert_at(index, *values) should insert new nodes with the given values at the given index. For example:
+    # list that's already set up
+    # puts list
+    # => "( 1 ) -> ( 2 ) -> ( 3 ) -> null"
+
+    #  list.insert_at(1, 10, 11)
+    #  puts list
+    # => "( 1 ) -> ( 10 ) -> ( 11 ) -> ( 2 ) -> ( 3 ) -> null"
+    # If the method is called with an index that is out of bounds (below 0 or above the list’s size), raise an IndexError.
+  def insert_at(index, *values)
+    values.reverse_each do |val|
+      index_counter = 0
+      tmp = @head
+      if @head == nil
+        return nil
+      end
+      
+      if @head != nil && index_counter == index
+        prepend(val)
+        return
+        index_counter += 1
+      end
+      
+      prev = nil
+      cur = @head
+
+      while cur != nil && index_counter != index
+        index_counter += 1
+        prev = cur
+        cur = cur.next_node
+      end
+      if cur != nil 
+        prev.next_node = Node.new(val, cur)
+      end
+    end
+  end
+
+
 end
 
 class Node
@@ -152,9 +190,9 @@ end
 
 list = LinkedList.new
 p list
-p list.to_s
+# p list.to_s
 p list.append(45)
-p list.to_s
+# p list.to_s
 p list.append(35)
 p list.prepend(9)
 p list.prepend(7)
@@ -173,4 +211,9 @@ p list
 # # p list.index(7)
 # # p list.index(100)
 p list.to_s
-
+# puts list
+# p list.insert_at(3, 5, 6, 10)
+p list.insert_at(0, 99, 999)
+# p list.insert_at(4, 99, 999 )
+# p list.insert_at(2, 99, 999, 9999)
+puts list
