@@ -170,6 +170,28 @@ class LinkedList
     end
   end
 
+  # remove_at(index) that removes the node at the given index.
+  # If the given index is out of bounds (below 0 or greater than or equal to the list’s size), raise an IndexError.
+  def remove_at(index)
+    raise IndexError, "index #{index} is below 0" if index < 0
+    raise IndexError, "inex #{index} is out of bounds" if index >= size
+
+    if index == 0
+      to_be_removed = @head
+      @head = @head.next_node
+      return to_be_removed.value
+    end
+
+    cur = @head
+    (index - 1).times do
+      cur = cur.next_node
+    end
+    to_be_removed = cur.next_node
+    cur.next_node = to_be_removed.next_node
+
+    to_be_removed.value
+  end
+
 
 end
 
@@ -182,32 +204,45 @@ class Node
 
 end
 
-list = LinkedList.new
-p list
+# list = LinkedList.new
+# p list
+# # p list.to_s
+# p list.append(45)
+# # p list.to_s
+# p list.append(35)
+# p list.prepend(9)
+# p list.prepend(7)
+# p list.prepend(35)
+# # p list.at(0)
+# # p list.at(1)
+# # p list.at(2)
+# # p list.at(3)
+# # p list.at(4)
+# p list
+# # # p list.contains?(35)
+# # # p list.contains?(15)
+# # # p list.index(45)
+# # # p list.index(35)
+# # # p list.index(9)
+# # # p list.index(7)
+# # # p list.index(100)
 # p list.to_s
-p list.append(45)
-# p list.to_s
-p list.append(35)
-p list.prepend(9)
-p list.prepend(7)
-p list.prepend(35)
-# p list.at(0)
-# p list.at(1)
-# p list.at(2)
-# p list.at(3)
-# p list.at(4)
-p list
-# # p list.contains?(35)
-# # p list.contains?(15)
-# # p list.index(45)
-# # p list.index(35)
-# # p list.index(9)
-# # p list.index(7)
-# # p list.index(100)
-p list.to_s
+# # puts list
+# # p list.insert_at(3, 5, 6, 10)
+# # p list.insert_at(0, 99, 999)
+# # p list.insert_at(4, 99, 999 )
+# # p list.insert_at(2, 99, 999, 9999)
+# # p list.remove_at(0)
+# p list.remove_at(1)
+# # p list.remove_at(0)
 # puts list
-p list.insert_at(3, 5, 6, 10)
-# p list.insert_at(0, 99, 999)
-# p list.insert_at(4, 99, 999 )
-# p list.insert_at(2, 99, 999, 9999)
+
+list = LinkedList.new
+
+list.append('dog')
+list.append('cat')
+list.append('parrot')
+list.append('hamster')
+list.append('snake')
+list.append('turtle')
 puts list
